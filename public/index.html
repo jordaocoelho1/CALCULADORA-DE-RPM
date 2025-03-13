@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de RPM</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2378451179644882"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Botão do Modo Escuro -->
+    <button id="toggleDarkMode">🌙</button>
+
+    <!-- Container da Calculadora -->
+    <div class="container" class="fixed-container">
+      <h1>Calculadora de RPM</h1>
+
+      <!-- Seção "Moedas Hoje" -->
+      <div id="moedasHoje">
+        <h2>Moedas Hoje</h2>
+        <p>Dólar (USD): <span id="usdHoje">Carregando...</span></p>
+        <p>Euro (EUR): <span id="eurHoje">Carregando...</span></p>
+        <p>Libra (GBP): <span id="gbpHoje">Carregando...</span></p>
+      </div>
+
+      <!-- Formulário de cálculo -->
+      <form id="calculadoraForm">
+        <label for="totalVisualizacoes"
+          >Total de Visualizações:
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext">Número total de visualizações.</span>
+          </span></label
+        >
+        <input type="text" id="totalVisualizacoes" required maxlength="14" />
+        <small id="visualizacoesFormatadas">0 visualizações</small>
+
+        <label for="percentualValidas"
+          >% de Visualizações Válidas:
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext"
+              >Porcentagem de visualizações que são consideradas válidas para
+              monetização.</span
+            >
+          </span></label
+        >
+        <input
+          type="number"
+          id="percentualValidas"
+          min="0"
+          max="100"
+          required
+          maxlength="3"
+        />
+
+        <label for="rpm"
+          >RPM (Receita por Mil):
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext"
+              >RPM é a receita gerada por cada mil visualizações.</span
+            >
+          </span></label
+        >
+        <input type="number" id="rpm" step="0.01" required />
+
+        <label for="moeda">Moeda:</label>
+        <select id="moeda" required>
+          <option value="USD">Dólar Americano (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="GBP">Libra Esterlina (GBP)</option>
+        </select>
+
+        <button type="button" onclick="calcular()" disabled>Calcular</button>
+      </form>
+
+      <!-- Resultados -->
+      <div id="resultado">
+        <h2>Resultado:</h2>
+        <p id="valorMoeda"></p>
+        <p id="valorBRL"></p>
+      </div>
+    </div>
+    <!-- Container do Histórico -->
+    <div class="historico-container" class="fixed-container">
+      <h2></h2>
+      <div id="historico"></div>
+    </div>
+    <!-- Seção "Sobre o RPM" -->
+    <div id="sobre-rpm" class="hidden">
+      <h2>O Que é RPM?</h2>
+      <p>
+        O <strong>RPM (Receita por Mil Impressões)</strong> é uma métrica usada
+        para medir a receita gerada a cada mil visualizações de anúncios em um
+        site, blog ou plataforma de vídeos. Ele é amplamente utilizado por
+        criadores de conteúdo e publishers para entender o desempenho financeiro
+        de suas estratégias de monetização.
+      </p>
+
+      <h3>Como Funciona?</h3>
+      <p>
+        O RPM é calculado dividindo a receita total pelo número de impressões de
+        anúncios e multiplicando o resultado por 1000. Por exemplo, se um site
+        ganha R$ 50 com 10.000 impressões, o RPM será R$ 5.
+      </p>
+
+      <h3>Por Que é Importante?</h3>
+      <p>
+        O RPM ajuda criadores e empresas a entenderem o valor de seu tráfego e a
+        otimizarem suas estratégias de monetização. Ele também é usado para
+        comparar o desempenho de diferentes plataformas ou tipos de anúncios.
+      </p>
+
+      <h3>Exemplos Práticos</h3>
+      <p>
+        No YouTube, o RPM pode variar bastante dependendo do nicho do canal. Por
+        exemplo:
+      </p>
+      <ul>
+        <li>Canais de tecnologia: RPM médio de US$ 10 a US$ 20.</li>
+        <li>Canais de entretenimento: RPM médio de US$ 5 a US$ 10.</li>
+        <li>Canais de educação: RPM médio de US$ 15 a US$ 30.</li>
+      </ul>
+
+      <h3>Fatores que Afetam o RPM</h3>
+      <p>Vários fatores podem influenciar o RPM, incluindo:</p>
+      <ul>
+        <li>
+          <strong>Nicho do conteúdo:</strong> Nichos mais lucrativos, como
+          finanças e tecnologia, tendem a ter um RPM mais alto.
+        </li>
+        <li>
+          <strong>Localização do público:</strong> Países como EUA e Reino Unido
+          geralmente têm um RPM mais alto do que países em desenvolvimento.
+        </li>
+        <li>
+          <strong>Qualidade do tráfego:</strong> Tráfego orgânico e engajado
+          tende a gerar um RPM mais alto.
+        </li>
+      </ul>
+
+      <h3>Dicas para Aumentar o RPM</h3>
+      <p>Aqui estão algumas dicas para aumentar o RPM do seu site ou canal:</p>
+      <ol>
+        <li>Otimize a colocação de anúncios para maximizar a visibilidade.</li>
+        <li>Crie conteúdo de alta qualidade que atraia um público engajado.</li>
+        <li>
+          Use anúncios responsivos que se adaptem a diferentes dispositivos.
+        </li>
+      </ol>
+
+      <h3>Perguntas Frequentes (FAQ)</h3>
+      <p><strong>Qual a diferença entre RPM e CPM?</strong></p>
+      <p>
+        O RPM mede a receita gerada por mil impressões, enquanto o CPM mede o
+        custo por mil impressões para os anunciantes.
+      </p>
+
+      <p><strong>Como o RPM é calculado no YouTube?</strong></p>
+      <p>
+        No YouTube, o RPM é calculado com base na receita gerada por anúncios
+        exibidos nos vídeos e no número de visualizações.
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -26,7 +26,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  background-color: #28a745;
+  background-color: #333;
   color: #fff;
   font-size: 16px;
   z-index: 1000;
@@ -36,13 +36,19 @@ body {
 }
 
 #toggleDarkMode:hover {
-  background-color: #218838;
+  background-color: #555;
 }
-
+.fixed-container {
+  display: flex;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  background-color: #f4f4f4;
+}
 /* Container da Calculadora */
 .container {
+  flex: 1;
   background-color: #fff;
   padding: 20px;
+  margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -100,6 +106,7 @@ select:focus {
 
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -152,6 +159,7 @@ button:disabled {
 
 /* Container do Histórico */
 .historico-container {
+  flex: 1;
   margin-top: 20px;
   padding: 15px;
   border: 1px solid #ccc;
@@ -221,7 +229,125 @@ button:disabled {
   visibility: visible;
   opacity: 1;
 }
+/* Seção "Sobre o RPM" */
+/* Estilo da seção "Sobre o RPM" */
+#sobre-rpm {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  margin-top: 100vh; /* Posiciona após o container fixo */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra na parte superior */
+}
 
+/* Títulos da seção */
+#sobre-rpm h2 {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+#sobre-rpm h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #007bff;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+#sobre-rpm h3 {
+  font-size: 1.8em;
+  color: #007bff;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+/* Parágrafos */
+#sobre-rpm p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Listas */
+#sobre-rpm ul,
+#sobre-rpm ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#sobre-rpm ul li,
+#sobre-rpm ol li {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+#sobre-rpm ul li::before {
+  content: "•";
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+#sopre-rpm ol {
+  counter-reset: item;
+}
+
+#sobre-rpm ol li {
+  counter-increment: item;
+}
+
+#sobre-rpm ol li::before {
+  content: counter(item) ".";
+  color: #007bff;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Destaques */
+#sobre-rpm strong {
+  color: #007bff;
+}
+
+/* Transição ao aparecer */
+#sobre-rpm.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  visibility: hidden;
+}
+
+#sobre-rpm.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #sobre-rpm {
+    padding: 40px 15px;
+  }
+
+  #sobre-rpm h2 {
+    font-size: 1.8em;
+  }
+
+  #sobre-rpm h3 {
+    font-size: 1.5em;
+  }
+
+  #sobre-rpm p {
+    font-size: 1em;
+  }
+}
 /* Modo Escuro */
 .dark-mode {
   background-color: #333;
@@ -276,6 +402,11 @@ button:disabled {
   color: #fff;
 }
 
+/* Ajustes para toglle no modo escuro */
+.dark-mode #toggleDarkMode {
+  background-color: #fff;
+  color: #333;
+}
 /* Responsividade para telas menores */
 @media (max-width: 480px) {
   .container {

@@ -255,3 +255,15 @@ window.addEventListener("load", function () {
 
 // Atualiza o histórico ao carregar a página
 atualizarHistorico();
+
+window.addEventListener("scroll", function () {
+  const sobreRpm = document.getElementById("sobre-rpm");
+  const rect = sobreRpm.getBoundingClientRect();
+
+  // Verifica se a seção está visível na tela
+  if (rect.top <= window.innerHeight * 0.8) {
+    // 80% da altura da tela
+    sobreRpm.classList.remove("hidden");
+    sobreRpm.classList.add("visible");
+  }
+});
