@@ -1,0 +1,334 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Botão do Modo Escuro */
+#toggleDarkMode {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px; /* Largura fixa */
+  height: 40px; /* Altura fixa */
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toggleDarkMode:hover {
+  background-color: #218838;
+}
+
+/* Container da Calculadora */
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#moedasHoje {
+  margin-bottom: 20px;
+}
+
+#moedasHoje h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+#moedasHoje p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#visualizacoesFormatadas {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 12px;
+  color: #555;
+  text-align: left;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Estilo para o botão desabilitado */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#resultado {
+  display: none;
+  margin-top: 20px;
+}
+
+#valorMoeda,
+#valorBRL {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Container do Histórico */
+.historico-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.historico-container h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Itens do Histórico */
+.historico-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 4px;
+}
+/* Estilo para o botão de limpar histórico */
+#limparHistorico {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#limparHistorico:hover {
+  background-color: #c82333;
+}
+/* Tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Modo Escuro */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .container {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Ajustes para títulos no modo escuro */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode #moedasHoje h2,
+.dark-mode #moedasHoje p,
+.dark-mode label,
+.dark-mode #visualizacoesFormatadas,
+.dark-mode #resultado,
+.dark-mode #valorMoeda,
+.dark-mode #valorBRL {
+  color: #fff; /* Texto branco para melhor contraste */
+}
+
+/* Ajustes para inputs no modo escuro */
+.dark-mode input,
+.dark-mode select {
+  background-color: #555;
+  color: #fff;
+  border-color: #666;
+}
+
+.dark-mode input::placeholder {
+  color: #bbb; /* Placeholder mais claro */
+}
+
+/* Ajustes para o histórico no modo escuro */
+.dark-mode .historico-container {
+  background-color: #444;
+  border-color: #666;
+}
+
+.dark-mode .historico-item {
+  background-color: #555;
+  border-color: #666;
+  color: #fff;
+}
+
+/* Ajustes para tooltips no modo escuro */
+.dark-mode .tooltip .tooltiptext {
+  background-color: #777;
+  color: #fff;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  #moedasHoje h2 {
+    font-size: 16px;
+  }
+
+  #moedasHoje p {
+    font-size: 13px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  select {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #valorMoeda,
+  #valorBRL {
+    font-size: 14px;
+  }
+
+  .historico-container {
+    padding: 10px;
+  }
+
+  .historico-container h2 {
+    font-size: 16px;
+  }
+
+  .historico-item {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .tooltip .tooltiptext {
+    width: 150px;
+    font-size: 12px;
+  }
+}

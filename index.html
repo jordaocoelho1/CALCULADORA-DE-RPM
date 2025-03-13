@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de RPM</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Botão do Modo Escuro -->
+    <button id="toggleDarkMode">🌙</button>
+
+    <!-- Container da Calculadora -->
+    <div class="container">
+      <h1>Calculadora de RPM</h1>
+
+      <!-- Seção "Moedas Hoje" -->
+      <div id="moedasHoje">
+        <h2>Moedas Hoje</h2>
+        <p>Dólar Americano (USD): <span id="usdHoje">Carregando...</span></p>
+        <p>Euro (EUR): <span id="eurHoje">Carregando...</span></p>
+        <p>Libra Esterlina (GBP): <span id="gbpHoje">Carregando...</span></p>
+      </div>
+
+      <!-- Formulário de cálculo -->
+      <form id="calculadoraForm">
+        <label for="totalVisualizacoes"
+          >Total de Visualizações:
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext">Número total de visualizações.</span>
+          </span></label
+        >
+        <input type="text" id="totalVisualizacoes" required maxlength="14" />
+        <small id="visualizacoesFormatadas">0 visualizações</small>
+
+        <label for="percentualValidas"
+          >% de Visualizações Válidas:
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext"
+              >Porcentagem de visualizações que são consideradas válidas para
+              monetização.</span
+            >
+          </span></label
+        >
+        <input
+          type="number"
+          id="percentualValidas"
+          min="0"
+          max="100"
+          required
+          maxlength="3"
+        />
+
+        <label for="rpm"
+          >RPM (Receita por Mil):
+          <span class="tooltip"
+            >ℹ️
+            <span class="tooltiptext"
+              >RPM é a receita gerada por cada mil visualizações.</span
+            >
+          </span></label
+        >
+        <input type="number" id="rpm" step="0.01" required />
+
+        <label for="moeda">Moeda:</label>
+        <select id="moeda" required>
+          <option value="USD">Dólar Americano (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="GBP">Libra Esterlina (GBP)</option>
+        </select>
+
+        <button type="button" onclick="calcular()" disabled>Calcular</button>
+      </form>
+
+      <!-- Resultados -->
+      <div id="resultado">
+        <h2>Resultado:</h2>
+        <p id="valorMoeda"></p>
+        <p id="valorBRL"></p>
+      </div>
+    </div>
+
+    <!-- Container do Histórico -->
+    <div class="historico-container">
+      <h2></h2>
+      <div id="historico"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
